@@ -10,4 +10,11 @@ resource "aws_instance" "my-app" {
   tags = {
     Name = "my-app"
   }
+
+  user_data = <<-EOF
+  #!/bin/bash
+  sudo apt update -y
+  sudo apt install -y nginx
+  systemctl start nginx
+  EOF
 }
